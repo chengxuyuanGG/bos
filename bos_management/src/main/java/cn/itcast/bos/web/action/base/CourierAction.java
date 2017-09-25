@@ -1,6 +1,7 @@
 package cn.itcast.bos.web.action.base;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -86,6 +87,16 @@ public class CourierAction extends BaseAction<Courier> {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return SUCCESS;
+	}
+
+	//查询未关联定区的快递员
+	@Action(value = "courier_findnoassociation",results = {@Result(name = "success",type = "json")})
+	public String findNoAssociation(){
+		//调用业务层查询未关联定区的快递员
+		List<Courier> couriers = courierService.findNoAssociation();
+		//压栈
+		ActionContext.getContext().getValueStack().push(couriers);
 		return SUCCESS;
 	}
 }

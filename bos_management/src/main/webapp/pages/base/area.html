@@ -69,7 +69,14 @@
 				id : 'button-import',
 				text : '导入',
 				iconCls : 'icon-redo'
-			}, {
+			},{
+			    id : 'button-export',
+				text : '导出',
+				iconCls : 'icon-undo',
+				handler : function () {
+					window.location.href='../../area_batchDoload.action';
+                }
+			},{
 				id : 'button-search',
 				text : '查询',
 				iconCls : 'icon-search',
@@ -143,7 +150,7 @@
 			        height: 400,
 			        resizable:false
 			    });
-			    
+			    //文件上传
 			    $("#button-import").upload({
 			    	action : '../../area_batchImport.action',
 			    	onSelect : function() {
@@ -163,7 +170,7 @@
 			    	}
 			    });
 			    
-			    // 添加事件
+			    // 查询事件
 			    $("#searchBtn").click(function() {
 			    	var params = $("#searchForm").serializeJson();
 			    	// 将数据加载至远程

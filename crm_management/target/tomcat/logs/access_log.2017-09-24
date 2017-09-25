@@ -1,0 +1,2 @@
+127.0.0.1 - - [24/Sep/2017:18:45:32 +0800] "GET /crm_management/service/customerService/noassociationcustomer HTTP/1.1" 200 79 http-bio-9998-exec-1 1357
+127.0.0.1 - - [24/Sep/2017:18:45:32 +0800] "GET /crm_management/service/customerService/associationfixedareacustomer/DQ001 HTTP/1.1" 200 186 http-bio-9998-exec-2 1357

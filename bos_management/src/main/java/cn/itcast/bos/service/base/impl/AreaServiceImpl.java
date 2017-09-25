@@ -61,4 +61,14 @@ public class AreaServiceImpl implements AreaService {
 		return arearepository.findAll(specification, pageable);
 	}
 
+	@Override
+	public List<Area> findAll() {
+		return arearepository.findAll();
+	}
+
+	@Override
+	public List<Area> findAllToSubArea() {
+		return arearepository.findAll();
+	}
+
 }

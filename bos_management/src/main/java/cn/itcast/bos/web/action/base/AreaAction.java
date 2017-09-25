@@ -9,16 +9,18 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -34,6 +36,8 @@ import cn.itcast.bos.service.base.AreaService;
 import cn.itcast.bos.utils.PinYin4jUtils;
 import cn.itcast.bos.web.action.common.BaseAction;
 import oracle.net.aso.p;
+
+import javax.servlet.http.HttpServletResponse;
 
 @ParentPackage("json-default")
 @Namespace("/")
@@ -59,11 +63,11 @@ public class AreaAction extends BaseAction<Area> {
 
 	@Action(value = "area_batchImport")
 	public String batchImport() {
-		
+
 		// 解析.xls和.xlsx文件
 		// 文件类型判断
 		if (StringUtils.isBlank(fileFileName) || (!fileFileName.endsWith(".xls") && !fileFileName.endsWith(".xlsx"))) {
-			
+
 			throw new RuntimeException("别瞎搞......");
 		}
 		try {
@@ -122,14 +126,55 @@ public class AreaAction extends BaseAction<Area> {
 		return NONE;
 	}
 
-	
+
 
 	@Action(value = "area_pageQuery", results = { @Result(name = "success", type = "json") })
 	public String pageQuery() {
 		Pageable pageable = new PageRequest(page-1, rows);
 		Page<Area> page = areaService.pageQuery(model , pageable);
-		
+
 		pushPageDatakToValueStack(page);
+		return SUCCESS;
+	}
+
+	//数据导出
+	@Action(value = "area_batchDoload")
+	public String batchDoload(){
+		List<Area> list = areaService.findAll();
+		HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
+		HSSFSheet sheet = hssfWorkbook.createSheet();
+		HSSFRow row = sheet.createRow(0);
+		row.createCell(0).setCellValue("编号");
+		row.createCell(1).setCellValue("省份");
+		row.createCell(2).setCellValue("城市");
+		row.createCell(3).setCellValue("区域");
+		for (int i = 0;i < list.size();i++
+				) {
+			HSSFRow row_data = sheet.createRow(i + 1);
+			row_data.createCell(0).setCellValue(list.get(i).getId());
+			row_data.createCell(1).setCellValue(list.get(i).getProvince());
+			row_data.createCell(2).setCellValue(list.get(i).getCity());
+			row_data.createCell(3).setCellValue(list.get(i).getDistrict());
+		}
+		HttpServletResponse response = ServletActionContext.getResponse();
+		String fileName = "area.xls";
+		response.setContentType(ServletActionContext.getServletContext().getMimeType("fileName"));
+		response.setHeader( "Content-Disposition", "attachement;filename="+fileName);
+		try {
+			hssfWorkbook.write(response.getOutputStream());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	//查询所有区域显示在分区页面
+	@Action(value = "area_findAll",results = {@Result(name = "success",type = "json")})
+	public String findAll(){
+		//查询所有Area对象
+		List<Area> list = areaService.findAllToSubArea();
+		//压栈
+		ActionContext.getContext().getValueStack().push(list);
 		return SUCCESS;
 	}
 }

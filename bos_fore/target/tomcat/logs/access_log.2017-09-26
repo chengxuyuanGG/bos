@@ -1,0 +1,12 @@
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:00:06:32 +0800] "GET /bos_fore HTTP/1.1" 302 - http-bio-9999-exec-1 0
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:00:06:35 +0800] "GET /bos_fore/login.html HTTP/1.1" 200 6231 http-bio-9999-exec-2 421
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:00:06:35 +0800] "GET /bos_fore/css/styleloginsign.css HTTP/1.1" 200 2646 http-bio-9999-exec-3 0
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:00:06:35 +0800] "GET /bos_fore/js/self/validate.js HTTP/1.1" 200 413 http-bio-9999-exec-6 15
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:00:06:35 +0800] "GET /bos_fore/images/icon/yanz.png HTTP/1.1" 200 3415 http-bio-9999-exec-7 0
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:00:06:35 +0800] "GET /bos_fore/css/bootstrap/bootstrap.min.css HTTP/1.1" 200 121265 http-bio-9999-exec-4 16
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:00:06:35 +0800] "GET /bos_fore/images/show/suyun/loginbg.png HTTP/1.1" 200 73035 http-bio-9999-exec-9 16
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:00:06:37 +0800] "GET /bos_fore/signup.html HTTP/1.1" 200 6281 http-bio-9999-exec-10 0
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:00:10:26 +0800] "GET /bos_fore HTTP/1.1" 302 - http-bio-9999-exec-1 0
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:00:10:31 +0800] "GET /bos_fore/signup.html HTTP/1.1" 200 6282 http-bio-9999-exec-2 561
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:00:25:14 +0800] "GET /bos_fore HTTP/1.1" 302 - http-bio-9999-exec-1 0
+0:0:0:0:0:0:0:1 - - [26/Sep/2017:00:25:20 +0800] "GET /bos_fore/signup.html HTTP/1.1" 200 6280 http-bio-9999-exec-2 566

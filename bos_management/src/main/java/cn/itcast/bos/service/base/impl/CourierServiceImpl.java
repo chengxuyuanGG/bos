@@ -2,6 +2,7 @@ package cn.itcast.bos.service.base.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -96,4 +97,16 @@ public class CourierServiceImpl implements CourierService {
 		return courierRepository.findOne(intId);
 	}
 
+	@Override
+	public List<Courier> findNoAssociation() {
+		//封装specification
+		Specification<Courier> specification = new Specification<Courier>() {
+			@Override
+			public Predicate toPredicate(Root<Courier> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				Predicate p = cb.isEmpty(root.get("fixedAreas").as(Set.class));
+				return p;
+			}
+		};
+		return courierRepository.findAll(specification);
+	}
 }

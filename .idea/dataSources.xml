@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="@192.168.66.16" uuid="e2200478-c82b-4596-9ece-e6b1a5861db2">
+      <driver-ref>oracle</driver-ref>
+      <synchronize>true</synchronize>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@192.168.66.16:1521:ORCL</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="crm" uuid="205097ae-7cd1-41f0-b7b3-d7f3f7838f3d">
+      <driver-ref>oracle</driver-ref>
+      <synchronize>true</synchronize>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@192.168.66.16:1521:ORCL</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="system" uuid="c05a9e8d-37ef-46ea-aaa4-1e9c2291e62e">
+      <driver-ref>oracle</driver-ref>
+      <synchronize>true</synchronize>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@192.168.66.16:1521:ORCL</jdbc-url>
+    </data-source>
+  </component>
+</project>

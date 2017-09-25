@@ -5,6 +5,8 @@ import org.springframework.data.domain.Pageable;
 
 import cn.itcast.bos.domain.base.Courier;
 
+import java.util.List;
+
 public interface CourierService {
 
 	public void save(Courier courier);
@@ -16,4 +18,6 @@ public interface CourierService {
 	public void updateBacth(String[] idArray);
 
 	public Courier findById(int intId);
+
+    public List<Courier> findNoAssociation();
 }
